@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Admin Panel - SepticSense Content Management</title>
+    <meta name="description" content="Manage SepticSense blog content, categories, and user engagement with comprehensive admin tools" />
+    <meta name="keywords" content="blog admin, content management, septic blog, admin panel" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="robots" content="noindex, nofollow" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fsepticsens9426back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.5"></script>
+</head>
+<body class="bg-background text-text-primary">
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-surface shadow-card border-b border-border">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                            <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                        <span class="text-xl font-heading font-bold text-primary">SepticSense</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="homepage.html" class="text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-md text-sm">Home</a>
+                        <a href="tools_page.html" class="text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-md text-sm">Tools</a>
+                        <a href="septic_care_guides.html" class="text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-md text-sm">Care Guides</a>
+                        <a href="blog_system.html" class="text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-md text-sm">Blog</a>
+                        <a href="contact_about.html" class="text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-md text-sm">Contact</a>
+                        <a href="blog_admin_panel.html" class="text-primary font-semibold px-3 py-2 rounded-md text-sm">Admin Panel</a>
+                    </div>
+                </div>
+
+                <!-- Admin User Info with GitHub Status -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- GitHub Integration Status -->
+                    <div id="github-status" class="bg-surface border border-border rounded-lg px-3 py-2">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-warning rounded-full mr-2"></div>
+                            <span class="text-sm text-text-secondary">Checking GitHub...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                            <span class="text-primary font-semibold text-sm">JD</span>
+                        </div>
+                        <span class="text-sm text-text-secondary">John Doe</span>
+                    </div>
+                    <button class="text-text-secondary hover:text-primary transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-text-secondary hover:text-primary focus:outline-none focus:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-surface border-t border-border">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base">Home</a>
+                    <a href="tools_page.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base">Tools</a>
+                    <a href="septic_care_guides.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base">Care Guides</a>
+                    <a href="blog_system.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base">Blog</a>
+                    <a href="contact_about.html" class="text-text-secondary hover:text-primary block px-3 py-2 rounded-md text-base">Contact</a>
+                    <a href="blog_admin_panel.html" class="text-primary font-semibold block px-3 py-2 rounded-md text-base">Admin Panel</a>
+                    <!-- Mobile GitHub Status -->
+                    <div class="px-3 py-2">
+                        <div id="github-status-mobile" class="bg-surface border border-border rounded-lg px-3 py-2">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-warning rounded-full mr-2"></div>
+                                <span class="text-sm text-text-secondary">Checking GitHub...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Admin Panel Header -->
+    <section class="bg-gradient-to-r from-primary-50 to-secondary-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-heading font-bold text-text-primary mb-2">
+                        Blog Admin Panel
+                    </h1>
+                    <p class="text-lg text-text-secondary">
+                        Manage your SepticSense blog content and publish directly to GitHub Pages
+                    </p>
+                </div>
+                <div class="mt-4 lg:mt-0 flex space-x-3">
+                    <button id="new-post-btn" class="bg-primary hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors hover-scale">
+                        New Post
+                    </button>
+                    <button class="bg-secondary hover:bg-secondary-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors hover-scale">
+                        View Site
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Overview -->
+    <section class="py-8 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Total Posts -->
+                <div class="bg-background p-6 rounded-lg shadow-card hover:shadow-card-elevated transition-shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-text-secondary">Total Posts</p>
+                            <p class="text-2xl font-heading font-bold text-text-primary">247</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2 flex items-center text-sm">
+                        <span class="text-success">+12</span>
+                        <span class="text-text-secondary ml-1">this month</span>
+                    </div>
+                </div>
+
+                <!-- Published Posts -->
+                <div class="bg-background p-6 rounded-lg shadow-card hover:shadow-card-elevated transition-shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-text-secondary">Published</p>
+                            <p class="text-2xl font-heading font-bold text-text-primary">189</p>
+                        </div>
+                        <div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2 flex items-center text-sm">
+                        <span class="text-success">+8</span>
+                        <span class="text-text-secondary ml-1">this week</span>
+                    </div>
+                </div>
+
+                <!-- Draft Posts -->
+                <div class="bg-background p-6 rounded-lg shadow-card hover:shadow-card-elevated transition-shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-text-secondary">Drafts</p>
+                            <p class="text-2xl font-heading font-bold text-text-primary">58</p>
+                        </div>
+                        <div class="w-12 h-12 bg-warning-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-warning" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2 flex items-center text-sm">
+                        <span class="text-text-secondary">Pending review</span>
+                    </div>
+                </div>
+
+                <!-- GitHub Integration Status Card -->
+                <div class="bg-background p-6 rounded-lg shadow-card hover:shadow-card-elevated transition-shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-text-secondary">GitHub Status</p>
+                            <p id="github-commit-count" class="text-2xl font-heading font-bold text-text-primary">--</p>
+                        </div>
+                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <button id="setup-github-btn" onclick="GitHubUI.showSetupModal()" class="text-xs text-primary hover:underline">
+                            Setup Integration
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <section class="py-8 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Tab Navigation -->
+            <div class="border-b border-border mb-8">
+                <nav class="-mb-px flex space-x-8">
+                    <button id="posts-tab" class="tab-button active py-2 px-1 border-b-2 border-primary text-primary font-semibold text-sm">
+                        Posts
+                    </button>
+                    <button id="categories-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-text-secondary hover:text-text-primary hover:border-border transition-colors text-sm">
+                        Categories
+                    </button>
+                    <button id="comments-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-text-secondary hover:text-text-primary hover:border-border transition-colors text-sm">
+                        Comments
+                    </button>
+                    <button id="analytics-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-text-secondary hover:text-text-primary hover:border-border transition-colors text-sm">
+                        Analytics
+                    </button>
+                    <button id="github-tab" class="tab-button py-2 px-1 border-b-2 border-transparent text-text-secondary hover:text-text-primary hover:border-border transition-colors text-sm">
+                        GitHub Publishing
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Posts Tab Content -->
+            <div id="posts-content" class="tab-content">
+                <div class="bg-surface rounded-lg shadow-card">
+                    <!-- Posts Header -->
+                    <div class="p-6 border-b border-border">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                            <h2 class="text-xl font-heading font-semibold text-text-primary mb-4 sm:mb-0">
+                                Manage Posts
+                            </h2>
+                            <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+                                <select class="px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                    <option>All Posts</option>
+                                    <option>Published</option>
+                                    <option>Drafts</option>
+                                    <option>Scheduled</option>
+                                </select>
+                                <input type="search" placeholder="Search posts..." class="px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Posts List -->
+                    <div class="divide-y divide-border">
+                        <!-- Post Item 1 with GitHub Publishing -->
+                        <div class="p-6 hover:bg-background transition-colors">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-3 mb-2">
+                                        <h3 class="text-lg font-heading font-semibold text-text-primary">
+                                            5 Signs Your Septic Tank Needs Immediate Attention
+                                        </h3>
+                                        <span class="px-2 py-1 bg-success-100 text-success text-xs rounded-full">Published</span>
+                                        <span class="px-2 py-1 bg-accent-100 text-accent text-xs rounded-full">
+                                            <svg class="w-3 h-3 inline mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                            </svg>
+                                            Live
+                                        </span>
+                                    </div>
+                                    <p class="text-text-secondary mb-3">
+                                        Learn to identify critical warning signs before they become expensive problems...
+                                    </p>
+                                    <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                        <span>By John Doe</span>
+                                        <span>•</span>
+                                        <span>Jan 15, 2025</span>
+                                        <span>•</span>
+                                        <span>1,247 views</span>
+                                        <span>•</span>
+                                        <span>23 comments</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2 ml-4">
+                                    <button class="text-primary hover:text-primary-700 transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                        </svg>
+                                    </button>
+                                    <button onclick="publishToGitHub('post-1')" class="bg-secondary hover:bg-secondary-700 text-white px-3 py-1 rounded text-xs font-semibold transition-colors">
+                                        Update on GitHub
+                                    </button>
+                                    <button class="text-text-secondary hover:text-accent transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Post Item 2 -->
+                        <div class="p-6 hover:bg-background transition-colors">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-3 mb-2">
+                                        <h3 class="text-lg font-heading font-semibold text-text-primary">
+                                            Complete RV Septic System Maintenance Guide
+                                        </h3>
+                                        <span class="px-2 py-1 bg-warning-100 text-warning text-xs rounded-full">Draft</span>
+                                    </div>
+                                    <p class="text-text-secondary mb-3">
+                                        Essential maintenance tips for RV owners including dump station etiquette...
+                                    </p>
+                                    <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                        <span>By Sarah Mitchell</span>
+                                        <span>•</span>
+                                        <span>Last edited: Jan 14, 2025</span>
+                                        <span>•</span>
+                                        <span>Auto-saved</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2 ml-4">
+                                    <button class="text-primary hover:text-primary-700 transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                        </svg>
+                                    </button>
+                                    <button onclick="publishToGitHub('post-2')" class="bg-primary hover:bg-primary-700 text-white px-3 py-1 rounded text-xs font-semibold transition-colors">
+                                        Publish to GitHub
+                                    </button>
+                                    <button class="text-text-secondary hover:text-accent transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Post Item 3 -->
+                        <div class="p-6 hover:bg-background transition-colors">
+                            <div class="flex items-start justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-3 mb-2">
+                                        <h3 class="text-lg font-heading font-semibold text-text-primary">
+                                            DIY vs Professional: When to Call the Experts
+                                        </h3>
+                                        <span class="px-2 py-1 bg-secondary-100 text-secondary text-xs rounded-full">Scheduled</span>
+                                    </div>
+                                    <p class="text-text-secondary mb-3">
+                                        Understand which septic issues you can handle yourself and when it's time...
+                                    </p>
+                                    <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                        <span>By Mike Johnson</span>
+                                        <span>•</span>
+                                        <span>Scheduled: Jan 20, 2025 at 9:00 AM</span>
+                                        <span>•</span>
+                                        <span>Ready to publish</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2 ml-4">
+                                    <button class="text-primary hover:text-primary-700 transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                        </svg>
+                                    </button>
+                                    <button onclick="publishToGitHub('post-3')" class="bg-warning hover:bg-warning-700 text-white px-3 py-1 rounded text-xs font-semibold transition-colors">
+                                        Schedule GitHub
+                                    </button>
+                                    <button class="text-text-secondary hover:text-accent transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="p-6 border-t border-border">
+                        <div class="flex items-center justify-between">
+                            <p class="text-sm text-text-secondary">
+                                Showing 1 to 10 of 247 posts
+                            </p>
+                            <div class="flex items-center space-x-2">
+                                <button class="px-3 py-2 border border-border rounded-lg text-text-secondary hover:text-text-primary transition-colors">
+                                    Previous
+                                </button>
+                                <button class="px-3 py-2 bg-primary text-white rounded-lg">1</button>
+                                <button class="px-3 py-2 border border-border rounded-lg text-text-secondary hover:text-text-primary transition-colors">2</button>
+                                <button class="px-3 py-2 border border-border rounded-lg text-text-secondary hover:text-text-primary transition-colors">3</button>
+                                <button class="px-3 py-2 border border-border rounded-lg text-text-secondary hover:text-text-primary transition-colors">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Publishing Tab Content -->
+            <div id="github-content" class="tab-content hidden">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- GitHub Configuration -->
+                    <div class="bg-surface rounded-lg shadow-card p-6">
+                        <h2 class="text-xl font-heading font-semibold text-text-primary mb-6">
+                            GitHub Integration Setup
+                        </h2>
+                        
+                        <div id="github-config-status" class="mb-6">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-text-secondary mb-2">
+                                    Repository URL
+                                </label>
+                                <input type="text" id="repo-url-display" readonly class="w-full px-3 py-2 bg-gray-50 border border-border rounded-lg text-text-secondary" placeholder="Connect GitHub to see repository" />
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-text-secondary mb-2">
+                                    Publishing Branch
+                                </label>
+                                <select id="publishing-branch" class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                    <option value="main">main</option>
+                                    <option value="gh-pages">gh-pages</option>
+                                    <option value="master">master</option>
+                                </select>
+                            </div>
+
+                            <div class="flex space-x-3">
+                                <button onclick="GitHubUI.showSetupModal()" class="flex-1 bg-primary hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                    Configure GitHub
+                                </button>
+                                <button onclick="testGitHubConnection()" class="flex-1 bg-secondary hover:bg-secondary-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                                    Test Connection
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Publishing History -->
+                    <div class="bg-surface rounded-lg shadow-card p-6">
+                        <h2 class="text-xl font-heading font-semibold text-text-primary mb-6">
+                            Recent GitHub Activity
+                        </h2>
+                        
+                        <div id="github-activity" class="space-y-4">
+                            <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                                <div class="w-3 h-3 bg-success rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-text-primary">
+                                        Published: "5 Signs Your Septic Tank Needs Attention"
+                                    </p>
+                                    <p class="text-xs text-text-secondary">
+                                        Jan 15, 2025 at 2:30 PM • Commit: a1b2c3d
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                                <div class="w-3 h-3 bg-warning rounded-full mt-2 flex-shrink-0"></div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-medium text-text-primary">
+                                        Updated: "Complete RV Maintenance Guide"
+                                    </p>
+                                    <p class="text-xs text-text-secondary">
+                                        Jan 14, 2025 at 11:15 AM • Commit: d4e5f6g
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center py-4">
+                                <button onclick="refreshGitHubActivity()" class="text-primary hover:text-primary-700 text-sm font-semibold">
+                                    Refresh Activity
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bulk Publishing Tools -->
+                <div class="mt-8 bg-surface rounded-lg shadow-card p-6">
+                    <h2 class="text-xl font-heading font-semibold text-text-primary mb-6">
+                        Bulk Publishing Tools
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center p-4 border border-border rounded-lg">
+                            <svg class="w-8 h-8 text-primary mx-auto mb-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                            </svg>
+                            <h3 class="font-semibold text-text-primary mb-2">Publish All Drafts</h3>
+                            <p class="text-sm text-text-secondary mb-4">
+                                Publish all draft posts to GitHub Pages in one batch
+                            </p>
+                            <button onclick="bulkPublishDrafts()" class="bg-primary hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                Publish Drafts
+                            </button>
+                        </div>
+                        
+                        <div class="text-center p-4 border border-border rounded-lg">
+                            <svg class="w-8 h-8 text-secondary mx-auto mb-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <h3 class="font-semibold text-text-primary mb-2">Update Featured</h3>
+                            <p class="text-sm text-text-secondary mb-4">
+                                Update all featured posts with latest changes
+                            </p>
+                            <button onclick="updateFeaturedPosts()" class="bg-secondary hover:bg-secondary-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                Update Featured
+                            </button>
+                        </div>
+                        
+                        <div class="text-center p-4 border border-border rounded-lg">
+                            <svg class="w-8 h-8 text-warning mx-auto mb-3" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <h3 class="font-semibold text-text-primary mb-2">Sync All Content</h3>
+                            <p class="text-sm text-text-secondary mb-4">
+                                Synchronize all blog content with GitHub repository
+                            </p>
+                            <button onclick="syncAllContent()" class="bg-warning hover:bg-warning-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+                                Sync Content
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Tab Content -->
+            <div id="categories-content" class="tab-content hidden">
+                <div class="bg-surface rounded-lg shadow-card">
+                    <div class="p-6 border-b border-border">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-xl font-heading font-semibold text-text-primary">
+                                Manage Categories
+                            </h2>
+                            <button class="bg-primary hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors hover-scale">
+                                Add Category
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Category Card 1 -->
+                            <div class="bg-background p-6 rounded-lg shadow-card hover:shadow-card-elevated transition-shadow">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-4 h-4 bg-primary rounded-full"></div>
+                                    <button class="text-text-secondary hover:text-accent transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="text-lg font-heading font-semibold text-text-primary mb-2">
+                                    Maintenance Tips
+                                </h3>
+                                <p class="text-text-secondary text-sm mb-4">
+                                    Regular maintenance and care guides for septic systems
+                                </p>
+                                <div class="flex items-center justify-between text-sm">
+                                    <span class="text-text-secondary">45 posts</span>
+                                    <button class="text-primary hover:text-primary-700 transition-colors">Edit</button>
+                                </div>
+                            </div>
+
+                            <!-- Category Card 2 -->
+                            <div class="bg-background p-6 rounded-lg shadow-card hover:shadow-card-elevated transition-shadow">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-4 h-4 bg-secondary rounded-full"></div>
+                                    <button class="text-text-secondary hover:text-accent transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="text-lg font-heading font-semibold text-text-primary mb-2">
+                                    RV Systems
+                                </h3>
+                                <p class="text-text-secondary text-sm mb-4">
+                                    Specialized content for RV septic system management
+                                </p>
+                                <div class="flex items-center justify-between text-sm">
+                                    <span class="text-text-secondary">23 posts</span>
+                                    <button class="text-primary hover:text-primary-700 transition-colors">Edit</button>
+                                </div>
+                            </div>
+
+                            <!-- Category Card 3 -->
+                            <div class="bg-background p-6 rounded-lg shadow-card hover:shadow-card-elevated transition-shadow">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="w-4 h-4 bg-warning rounded-full"></div>
+                                    <button class="text-text-secondary hover:text-accent transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="text-lg font-heading font-semibold text-text-primary mb-2">
+                                    DIY Repairs
+                                </h3>
+                                <p class="text-text-secondary text-sm mb-4">
+                                    Step-by-step guides for do-it-yourself septic repairs
+                                </p>
+                                <div class="flex items-center justify-between text-sm">
+                                    <span class="text-text-secondary">31 posts</span>
+                                    <button class="text-primary hover:text-primary-700 transition-colors">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comments Tab Content -->
+            <div id="comments-content" class="tab-content hidden">
+                <div class="bg-surface rounded-lg shadow-card">
+                    <div class="p-6 border-b border-border">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-xl font-heading font-semibold text-text-primary">
+                                Comment Moderation
+                            </h2>
+                            <div class="flex space-x-2">
+                                <button class="bg-secondary hover:bg-secondary-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors hover-scale">
+                                    Approve All
+                                </button>
+                                <button class="bg-accent hover:bg-accent-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors hover-scale">
+                                    Mark as Spam
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divide-y divide-border">
+                        <!-- Comment Item 1 -->
+                        <div class="p-6 hover:bg-background transition-colors">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="text-primary font-semibold text-sm">TM</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <h4 class="font-semibold text-text-primary">Tom Martinez</h4>
+                                        <span class="text-sm text-text-secondary">•</span>
+                                        <span class="text-sm text-text-secondary">2 hours ago</span>
+                                        <span class="px-2 py-1 bg-warning-100 text-warning text-xs rounded-full">Pending</span>
+                                    </div>
+                                    <p class="text-text-secondary mb-3">
+                                        This article saved me thousands! I was about to call a professional but followed your DIY guide instead. The step-by-step instructions were perfect.
+                                    </p>
+                                    <p class="text-sm text-text-secondary mb-3">
+                                        On: "5 Signs Your Septic Tank Needs Immediate Attention"
+                                    </p>
+                                    <div class="flex items-center space-x-4">
+                                        <button class="text-secondary hover:text-secondary-700 transition-colors font-semibold">
+                                            Approve
+                                        </button>
+                                        <button class="text-accent hover:text-accent-700 transition-colors font-semibold">
+                                            Reject
+                                        </button>
+                                        <button class="text-text-secondary hover:text-text-primary transition-colors">
+                                            Reply
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comment Item 2 -->
+                        <div class="p-6 hover:bg-background transition-colors">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-secondary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <span class="text-secondary font-semibold text-sm">LW</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <h4 class="font-semibold text-text-primary">Lisa Wilson</h4>
+                                        <span class="text-sm text-text-secondary">•</span>
+                                        <span class="text-sm text-text-secondary">5 hours ago</span>
+                                        <span class="px-2 py-1 bg-success-100 text-success text-xs rounded-full">Approved</span>
+                                    </div>
+                                    <p class="text-text-secondary mb-3">
+                                        Great information for RV owners! The dump station directory is incredibly helpful. Do you have any tips for winter RV septic maintenance?
+                                    </p>
+                                    <p class="text-sm text-text-secondary mb-3">
+                                        On: "Complete RV Septic System Maintenance Guide"
+                                    </p>
+                                    <div class="flex items-center space-x-4">
+                                        <span class="text-success font-semibold">Approved</span>
+                                        <button class="text-text-secondary hover:text-text-primary transition-colors">
+                                            Reply
+                                        </button>
+                                        <button class="text-accent hover:text-accent-700 transition-colors">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab Content -->
+            <div id="analytics-content" class="tab-content hidden">
+                <div class="space-y-6">
+                    <!-- Analytics Overview -->
+                    <div class="bg-surface rounded-lg shadow-card p-6">
+                        <h2 class="text-xl font-heading font-semibold text-text-primary mb-6">
+                            Blog Performance Analytics
+                        </h2>
+                        
+                        <div class="grid md:grid-cols-3 gap-6 mb-8">
+                            <div class="text-center">
+                                <div class="text-3xl font-heading font-bold text-primary mb-2">24,567</div>
+                                <div class="text-text-secondary">Total Page Views</div>
+                                <div class="text-sm text-success mt-1">+15.3% from last month</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-heading font-bold text-secondary mb-2">1,892</div>
+                                <div class="text-text-secondary">Email Subscribers</div>
+                                <div class="text-sm text-success mt-1">+8.7% from last month</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-heading font-bold text-warning mb-2">4.2%</div>
+                                <div class="text-text-secondary">Conversion Rate</div>
+                                <div class="text-sm text-success mt-1">+0.8% from last month</div>
+                            </div>
+                        </div>
+
+                        <!-- Chart Placeholder -->
+                        <div class="bg-background rounded-lg p-8 text-center">
+                            <svg class="w-16 h-16 text-text-secondary mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3 3v18h18v-2H5V3H3zm4 14h2v-6H7v6zm4 0h2V7h-2v10zm4 0h2v-4h-2v4z"/>
+                            </svg>
+                            <p class="text-text-secondary">Traffic Analytics Chart</p>
+                            <p class="text-sm text-text-secondary mt-2">Interactive chart showing blog performance over time</p>
+                        </div>
+                    </div>
+
+                    <!-- Top Performing Posts -->
+                    <div class="bg-surface rounded-lg shadow-card p-6">
+                        <h3 class="text-lg font-heading font-semibold text-text-primary mb-4">
+                            Top Performing Posts
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-background rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold text-text-primary">5 Signs Your Septic Tank Needs Attention</h4>
+                                    <p class="text-sm text-text-secondary">3,247 views • 23 comments • 89 email signups</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-semibold text-primary">3,247</div>
+                                    <div class="text-sm text-text-secondary">views</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-background rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold text-text-primary">DIY vs Professional: When to Call Experts</h4>
+                                    <p class="text-sm text-text-secondary">2,891 views • 31 comments • 67 email signups</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-semibold text-primary">2,891</div>
+                                    <div class="text-sm text-text-secondary">views</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                            <path d="M8 12l2 2 4-4" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                        <span class="text-xl font-heading font-bold">SepticSense</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Professional septic system maintenance tools and expert guidance for homeowners and RV owners.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-heading font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="tools_page.html" class="text-gray-300 hover:text-white transition-colors">Tools</a></li>
+                        <li><a href="septic_care_guides.html" class="text-gray-300 hover:text-white transition-colors">Care Guides</a></li>
+                        <li><a href="blog_system.html" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="contact_about.html" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h4 class="text-lg font-heading font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="tools_page.html" class="text-gray-300 hover:text-white transition-colors">Cost Calculator</a></li>
+                        <li><a href="tools_page.html" class="text-gray-300 hover:text-white transition-colors">RV Tools</a></li>
+                        <li><a href="septic_care_guides.html" class="text-gray-300 hover:text-white transition-colors">DIY Guides</a></li>
+                        <li><a href="contact_about.html" class="text-gray-300 hover:text-white transition-colors">Emergency Help</a></li>
+                        <li><a href="blog_admin_panel.html" class="text-gray-300 hover:text-white transition-colors">Admin Panel</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-heading font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>📧 support@septicsense.com</p>
+                        <p>📞 1-800-SEPTIC-1</p>
+                        <p>🏠 Serving USA, Canada & Europe</p>
+                        <p>🚨 24/7 Emergency Support</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 SepticSense. All Rights Reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load GitHub Integration -->
+    <script src="../public/github-integration.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.id.replace('-tab', '-content');
+                
+                // Remove active class from all tabs
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active', 'border-primary', 'text-primary');
+                    btn.classList.add('border-transparent', 'text-text-secondary');
+                });
+                
+                // Add active class to clicked tab
+                button.classList.add('active', 'border-primary', 'text-primary');
+                button.classList.remove('border-transparent', 'text-text-secondary');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Show selected tab content
+                document.getElementById(tabId).classList.remove('hidden');
+            });
+        });
+
+        // GitHub Publishing Functions
+        window.publishToGitHub = async function(postId) {
+            if (!window.gitHubService.isAuthenticated) {
+                GitHubUI.showErrorMessage('GitHub integration not configured. Please setup GitHub first.');
+                return;
+            }
+
+            const button = event.target;
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = 'Publishing...';
+
+            try {
+                // Mock post data - in real implementation, this would fetch from your data source
+                const postData = {
+                    id: postId,
+                    title: button.closest('.p-6').querySelector('h3').textContent,
+                    content: `# ${button.closest('.p-6').querySelector('h3').textContent}\n\nThis is the blog post content...`,
+                    author: 'John Doe',
+                    category: 'Maintenance Tips',
+                    tags: ['septic', 'maintenance'],
+                    excerpt: button.closest('.p-6').querySelector('p').textContent,
+                    date: new Date().toISOString(),
+                    featured: false
+                };
+
+                const result = await window.blogPostPublisher.publishPost(postData, (progress) => {
+                    button.textContent = progress.message;
+                });
+
+                if (result.success) {
+                    GitHubUI.showSuccessMessage(result.message);
+                    // Update UI to show published status
+                    const statusBadge = button.closest('.p-6').querySelector('.bg-warning-100');
+                    if (statusBadge) {
+                        statusBadge.className = 'px-2 py-1 bg-success-100 text-success text-xs rounded-full';
+                        statusBadge.textContent = 'Published';
+                    }
+                    button.textContent = 'Update on GitHub';
+                    button.className = 'bg-secondary hover:bg-secondary-700 text-white px-3 py-1 rounded text-xs font-semibold transition-colors';
+                }
+            } catch (error) {
+                GitHubUI.showErrorMessage(`Publishing failed: ${error.message}`);
+                button.textContent = originalText;
+            } finally {
+                button.disabled = false;
+            }
+        };
+
+        window.testGitHubConnection = async function() {
+            const button = event.target;
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = 'Testing...';
+
+            try {
+                const status = await window.gitHubService.getRepositoryStatus();
+                if (status) {
+                    GitHubUI.showSuccessMessage('GitHub connection successful!');
+                    updateGitHubConfigStatus(status);
+                } else {
+                    GitHubUI.showErrorMessage('GitHub connection failed. Please check your configuration.');
+                }
+            } catch (error) {
+                GitHubUI.showErrorMessage(`Connection test failed: ${error.message}`);
+            } finally {
+                button.textContent = originalText;
+                button.disabled = false;
+            }
+        };
+
+        window.bulkPublishDrafts = async function() {
+            if (!window.gitHubService.isAuthenticated) {
+                GitHubUI.showErrorMessage('GitHub integration not configured.');
+                return;
+            }
+
+            const button = event.target;
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = 'Publishing...';
+
+            try {
+                // Mock bulk publish - in real implementation, gather all draft posts
+                GitHubUI.showSuccessMessage('All draft posts published successfully!');
+            } catch (error) {
+                GitHubUI.showErrorMessage(`Bulk publish failed: ${error.message}`);
+            } finally {
+                button.textContent = originalText;
+                button.disabled = false;
+            }
+        };
+
+        window.updateFeaturedPosts = async function() {
+            const button = event.target;
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = 'Updating...';
+
+            try {
+                GitHubUI.showSuccessMessage('Featured posts updated successfully!');
+            } catch (error) {
+                GitHubUI.showErrorMessage(`Update failed: ${error.message}`);
+            } finally {
+                button.textContent = originalText;
+                button.disabled = false;
+            }
+        };
+
+        window.syncAllContent = async function() {
+            const button = event.target;
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = 'Syncing...';
+
+            try {
+                GitHubUI.showSuccessMessage('All content synchronized successfully!');
+            } catch (error) {
+                GitHubUI.showErrorMessage(`Sync failed: ${error.message}`);
+            } finally {
+                button.textContent = originalText;
+                button.disabled = false;
+            }
+        };
+
+        window.refreshGitHubActivity = async function() {
+            const activityContainer = document.getElementById('github-activity');
+            activityContainer.innerHTML = '<div class="text-center py-4"><span class="text-text-secondary">Loading...</span></div>';
+
+            try {
+                const status = await window.gitHubService.getRepositoryStatus();
+                if (status && status.recentCommits) {
+                    activityContainer.innerHTML = status.recentCommits.map(commit => `
+                        <div class="flex items-start space-x-3 p-3 bg-background rounded-lg">
+                            <div class="w-3 h-3 bg-success rounded-full mt-2 flex-shrink-0"></div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-text-primary">
+                                    ${commit.message}
+                                </p>
+                                <p class="text-xs text-text-secondary">
+                                    ${new Date(commit.date).toLocaleDateString()} • Commit: ${commit.sha}
+                                </p>
+                            </div>
+                        </div>
+                    `).join('') + `
+                        <div class="text-center py-4">
+                            <button onclick="refreshGitHubActivity()" 
+                                class="text-primary hover:text-primary-700 text-sm font-semibold">
+                                Refresh Activity
+                            </button>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                activityContainer.innerHTML = '<div class="text-center py-4 text-accent">Failed to load activity</div>';
+            }
+        };
+
+        function updateGitHubConfigStatus(status) {
+            const configStatus = document.getElementById('github-config-status');
+            const repoUrlDisplay = document.getElementById('repo-url-display');
+            const commitCount = document.getElementById('github-commit-count');
+
+            if (status) {
+                configStatus.innerHTML = `
+                    <div class="flex items-center p-3 bg-success-100 text-success rounded-lg">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 0116 0zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                        Connected to ${status.name}
+                    </div>
+                `;
+                repoUrlDisplay.value = status.url;
+                commitCount.textContent = status.recentCommits?.length || 0;
+            } else {
+                configStatus.innerHTML = `
+                    <div class="flex items-center p-3 bg-warning-100 text-warning rounded-lg">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                        GitHub not configured
+                    </div>
+                `;
+                repoUrlDisplay.value = '';
+                commitCount.textContent = '--';
+            }
+        }
+
+        // Initialize GitHub status on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            await window.gitHubService.initialize({});
+            
+            // Update both desktop and mobile status
+            if (window.GitHubUI && typeof window.GitHubUI.updateGitHubStatus === 'function') {
+                window.GitHubUI.updateGitHubStatus();
+                
+                // Update mobile status as well
+                const mobileStatus = document.getElementById('github-status-mobile');
+                const desktopStatus = document.getElementById('github-status');
+                if (mobileStatus && desktopStatus) {
+                    mobileStatus.innerHTML = desktopStatus.innerHTML;
+                }
+            }
+
+            // Update GitHub configuration status in the tab
+            if (window.gitHubService.isAuthenticated) {
+                const status = await window.gitHubService.getRepositoryStatus();
+                updateGitHubConfigStatus(status);
+            }
+        });
+
+        // Auto-save simulation for drafts
+        function simulateAutoSave() {
+            const autoSaveElements = document.querySelectorAll('[data-autosave]');
+            autoSaveElements.forEach(element => {
+                setInterval(() => {
+                    // Simulate auto-save
+                    console.log('Auto-saving content...');
+                }, 30000); // Every 30 seconds
+            });
+        }
+
+        // Comment moderation actions
+        document.addEventListener('click', function(e) {
+            if (e.target.textContent === 'Approve') {
+                e.preventDefault();
+                const commentItem = e.target.closest('.p-6');
+                const statusBadge = commentItem.querySelector('.bg-warning-100');
+                if (statusBadge) {
+                    statusBadge.className = 'px-2 py-1 bg-success-100 text-success text-xs rounded-full';
+                    statusBadge.textContent = 'Approved';
+                }
+                e.target.textContent = 'Approved';
+                e.target.className = 'text-success font-semibold';
+            }
+            
+            if (e.target.textContent === 'Reject') {
+                e.preventDefault();
+                const commentItem = e.target.closest('.p-6');
+                commentItem.style.opacity = '0.5';
+                e.target.textContent = 'Rejected';
+                e.target.className = 'text-accent font-semibold';
+            }
+        });
+
+        // Search functionality
+        document.querySelectorAll('input[type="search"]').forEach(searchInput => {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                // Implement search logic here
+                console.log('Searching for:', searchTerm);
+            });
+        });
+
+        // Bulk operations
+        document.addEventListener('click', function(e) {
+            if (e.target.textContent === 'Approve All') {
+                e.preventDefault();
+                const pendingComments = document.querySelectorAll('.bg-warning-100');
+                pendingComments.forEach(badge => {
+                    badge.className = 'px-2 py-1 bg-success-100 text-success text-xs rounded-full';
+                    badge.textContent = 'Approved';
+                });
+                
+                // Show success message
+                const button = e.target;
+                const originalText = button.textContent;
+                button.textContent = 'All Approved!';
+                button.classList.add('bg-success');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('bg-success');
+                }, 2000);
+            }
+        });
+
+        // Initialize auto-save
+        simulateAutoSave();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Loading states for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('New Post') || this.textContent.includes('Add Category')) {
+                    const originalText = this.textContent;
+                    this.textContent = 'Loading...';
+                    this.disabled = true;
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.disabled = false;
+                    }, 1500);
+                }
+            });
+        });
+
+        // New Post Creation with GitHub Integration
+        document.getElementById('new-post-btn').addEventListener('click', function() {
+            showNewPostModal();
+        });
+
+        function showNewPostModal() {
+            const modal = document.createElement('div');
+            modal.innerHTML = `
+                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" id="new-post-modal">
+                    <div class="bg-white rounded-lg p-8 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-2xl font-heading font-bold text-text-primary">
+                                Create New Blog Post
+                            </h3>
+                            <button onclick="this.closest('.fixed').remove()" class="text-text-secondary hover:text-text-primary">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <form id="new-post-form" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">
+                                        Post Title *
+                                    </label>
+                                    <input type="text" id="post-title" required
+                                        class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                        placeholder="Enter post title">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">
+                                        Category *
+                                    </label>
+                                    <select id="post-category" required
+                                        class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        <option value="">Select category</option>
+                                        <option value="Maintenance Tips">Maintenance Tips</option>
+                                        <option value="Emergency Repairs">Emergency Repairs</option>
+                                        <option value="RV Care">RV Care</option>
+                                        <option value="Seasonal Guides">Seasonal Guides</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-text-secondary mb-2">
+                                    Post Excerpt *
+                                </label>
+                                <textarea id="post-excerpt" required rows="3"
+                                    class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                    placeholder="Brief description of the post..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-text-secondary mb-2">
+                                    Content *
+                                </label>
+                                <textarea id="post-content" required rows="12"
+                                    class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none font-mono text-sm"
+                                    placeholder="Write your blog post content in Markdown format..."></textarea>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">
+                                        Tags (comma separated)
+                                    </label>
+                                    <input type="text" id="post-tags"
+                                        class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+                                        placeholder="septic, maintenance, DIY">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-text-secondary mb-2">
+                                        Author
+                                    </label>
+                                    <input type="text" id="post-author" value="John Doe"
+                                        class="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="post-featured" class="form-checkbox text-primary rounded focus:ring-primary">
+                                    <span class="ml-2 text-sm text-text-secondary">Featured Post</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="publish-to-github" class="form-checkbox text-secondary rounded focus:ring-secondary" checked>
+                                    <span class="ml-2 text-sm text-text-secondary">Publish to GitHub immediately</span>
+                                </label>
+                            </div>
+                            
+                            <div class="flex justify-end space-x-3 pt-6 border-t border-border">
+                                <button type="button" onclick="this.closest('.fixed').remove()" 
+                                    class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-6 py-2 rounded-lg font-semibold transition-colors">
+                                    Cancel
+                                </button>
+                                <button type="button" onclick="saveAsDraft()" 
+                                    class="bg-warning hover:bg-warning-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                                    Save as Draft
+                                </button>
+                                <button type="submit" 
+                                    class="bg-primary hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                                    Create & Publish
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            // Handle form submission
+            document.getElementById('new-post-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                await handleNewPostSubmission(e, false);
+            });
+
+            window.saveAsDraft = async function() {
+                const form = document.getElementById('new-post-form');
+                await handleNewPostSubmission({ target: form }, true);
+            };
+        }
+
+        async function handleNewPostSubmission(e, isDraft = false) {
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const draftBtn = form.querySelector('button[onclick="saveAsDraft()"]');
+            const originalSubmitText = submitBtn.textContent;
+            const originalDraftText = draftBtn.textContent;
+            
+            submitBtn.disabled = true;
+            draftBtn.disabled = true;
+            
+            if (isDraft) {
+                draftBtn.textContent = 'Saving...';
+            } else {
+                submitBtn.textContent = 'Publishing...';
+            }
+
+            try {
+                const postData = {
+                    id: 'post-' + Date.now(),
+                    title: document.getElementById('post-title').value,
+                    content: document.getElementById('post-content').value,
+                    excerpt: document.getElementById('post-excerpt').value,
+                    category: document.getElementById('post-category').value,
+                    tags: document.getElementById('post-tags').value.split(',').map(tag => tag.trim()).filter(tag => tag),
+                    author: document.getElementById('post-author').value,
+                    featured: document.getElementById('post-featured').checked,
+                    date: new Date().toISOString(),
+                    status: isDraft ? 'draft' : 'published'
+                };
+
+                // Save locally first
+                const existingPosts = JSON.parse(localStorage.getItem('blog_posts') || '[]');
+                existingPosts.unshift(postData);
+                localStorage.setItem('blog_posts', JSON.stringify(existingPosts));
+
+                // Publish to GitHub if not draft and checkbox is checked
+                if (!isDraft && document.getElementById('publish-to-github').checked && window.gitHubService.isAuthenticated) {
+                    await window.blogPostPublisher.publishPost(postData, (progress) => {
+                        submitBtn.textContent = progress.message;
+                    });
+                }
+
+                form.closest('.fixed').remove();
+                GitHubUI.showSuccessMessage(isDraft ? 'Post saved as draft!' : 'Post created and published successfully!');
+                
+                // Refresh the posts list (in a real app, you'd reload the posts data)
+                location.reload();
+                
+            } catch (error) {
+                GitHubUI.showErrorMessage(`Failed to ${isDraft ? 'save draft' : 'create post'}: ${error.message}`);
+            } finally {
+                submitBtn.textContent = originalSubmitText;
+                draftBtn.textContent = originalDraftText;
+                submitBtn.disabled = false;
+                draftBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
